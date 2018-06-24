@@ -9,7 +9,7 @@ public class Staff extends Entity {
 
     private String lastname;
 
-    private String role;
+    private long roleId;
 
     public String getFirstname() {
         return firstname;
@@ -19,8 +19,8 @@ public class Staff extends Entity {
         return lastname;
     }
 
-    public String getRole() {
-        return role;
+    public long getRoleId() {
+        return roleId;
     }
 
     public void setFirstname(String firstname) {
@@ -31,7 +31,7 @@ public class Staff extends Entity {
         this.lastname = lastname;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoleId(long role) {
+        this.roleId = role;
     }
 }

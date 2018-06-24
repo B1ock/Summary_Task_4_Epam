@@ -1,7 +1,8 @@
 <component name="libraryTable">
   <library name="apache-log4j-2.11">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../Libraries/apache-log4j-2.11.0-src" />
+      <root url="file://$PROJECT_DIR$/../Libraries/apache-log4j-2.11.0-src/apache-log4j-2.11.0-src" />
+      <root url="file://$PROJECT_DIR$/../Libraries/apache-log4j-2.11.0-bin/apache-log4j-2.11.0-bin" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
@@ -54,6 +55,9 @@
       <root url="file://$PROJECT_DIR$/../Libraries/apache-log4j-2.11.0-src/apache-log4j-2.11.0-src/log4j-to-slf4j/src/test/java" />
       <root url="file://$PROJECT_DIR$/../Libraries/apache-log4j-2.11.0-src/apache-log4j-2.11.0-src/log4j-web/src/main/java" />
       <root url="file://$PROJECT_DIR$/../Libraries/apache-log4j-2.11.0-src/apache-log4j-2.11.0-src/log4j-web/src/test/java" />
+      <root url="file://$PROJECT_DIR$/../Libraries/apache-log4j-2.11.0-bin/apache-log4j-2.11.0-bin" />
     </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../Libraries/apache-log4j-2.11.0-bin/apache-log4j-2.11.0-bin" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../Libraries/apache-log4j-2.11.0-bin/apache-log4j-2.11.0-bin" recursive="false" type="SOURCES" />
   </library>
 </component>

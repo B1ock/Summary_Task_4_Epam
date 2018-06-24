@@ -20,7 +20,7 @@ public class CommandContainer {
 		commands.put("noCommand", new NoCommand());
 		
 		// client commands
-		commands.put("listMenu", new ListMenuCommand());
+		commands.put("listMenu", new ListStaffCommand());
 		
 		// admin commands
 		commands.put("listOrders", new ListOrdersCommand());

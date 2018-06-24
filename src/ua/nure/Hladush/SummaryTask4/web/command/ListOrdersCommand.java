@@ -31,6 +31,8 @@ public class ListOrdersCommand extends Command {
 	 * @author D.Kolesnikov
 	 * 
 	 */
+
+	/*
 	private static class CompareById implements Comparator<UserOrderBean>, Serializable {
 		private static final long serialVersionUID = -1573481565177573283L;
 
@@ -44,20 +46,20 @@ public class ListOrdersCommand extends Command {
 	}
 	
 	private static Comparator<UserOrderBean> compareById = new CompareById();
-			
+			*/
 	@Override
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException, AppException {
 		LOG.debug("Commands starts");
 				
-		List<UserOrderBean> userOrderBeanList = DBManager.getInstance().getUserOrderBeans();
-		LOG.trace("Found in DB: userOrderBeanList --> " + userOrderBeanList);
+	//	List<UserOrderBean> userOrderBeanList = DBManager.getInstance().getUserOrderBeans();
+	//	LOG.trace("Found in DB: userOrderBeanList --> " + userOrderBeanList);
 		
-		Collections.sort(userOrderBeanList, compareById);
+	//	Collections.sort(userOrderBeanList, compareById);
 		
 		// put user order beans list to request
-		request.setAttribute("userOrderBeanList", userOrderBeanList);		
-		LOG.trace("Set the request attribute: userOrderBeanList --> " + userOrderBeanList);
+	//	request.setAttribute("userOrderBeanList", userOrderBeanList);
+	//	LOG.trace("Set the request attribute: userOrderBeanList --> " + userOrderBeanList);
 		
 		LOG.debug("Commands finished");
 		return Path.PAGE_LIST_ORDERS;

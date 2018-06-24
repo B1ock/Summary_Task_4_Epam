@@ -7,7 +7,7 @@ public class Flight extends Entity {
 
     private String name;
 
-    private String number;
+    private long number;
 
     private String whence;
 
@@ -21,7 +21,7 @@ public class Flight extends Entity {
         return name;
     }
 
-    public String getNumber() {
+    public long getNumber() {
         return number;
     }
 
@@ -33,7 +33,7 @@ public class Flight extends Entity {
         return where;
     }
 
-    public String getDeparturedate() {
+    public String getDepartureDate() {
         return departuredate;
     }
 
@@ -45,7 +45,7 @@ public class Flight extends Entity {
         this.name = name;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(long number) {
         this.number = number;
     }
 
@@ -57,7 +57,7 @@ public class Flight extends Entity {
         this.where = where;
     }
 
-    public void setDeparturedate(String departuredate) {
+    public void setDepartureDate(String departuredate) {
         this.departuredate = departuredate;
     }
 

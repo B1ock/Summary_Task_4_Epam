@@ -1,16 +1,31 @@
---==============================================================
--- ST4Example DB creation script for Apache Derby
---==============================================================
--- first add the apache nature to your project
--- second run Derby DBMS
--- third run this script with the help of ij utility
---==============================================================
 
--- this command connects ij to database st4db, if it doesn't exist DBMS creates one
-CONNECT 'jdbc:derby://localhost:1527/st4db;create=true;user=test;password=test';
+DROP TABLE IF EXISTS flights;
 
--- these commands remove all tables from the database
--- it implies an error if tables not exist in DB, just ignore it
+CREATE TABLE flights(
+    id INTEGER NOT NULL PRIMARY KEY,
+    name VARCHAR(30) NOT NULL ,
+    whence VARCHAR(15) NOT NULL ,
+    destination VARCHAR(15) NOT NULL ,
+    departure_date DATE,
+    status BOOLEAN
+
+);
+
+INSERT INTO flights VALUES(0, 'Kiev-Berlin',       'Kiev',      'Berlin',   '2018-10-07', 0 );
+INSERT INTO flights VALUES(1, 'Minsk-Praha',       'Minsk',     'Praha',    '2018-09-19', 0 );
+INSERT INTO flights VALUES(2, 'Paris-London',      'Paris',     'London',   '2018-05-11', 0 );
+INSERT INTO flights VALUES(3, 'Madrid-Rome',       'Madrid',    'Rome',     '2018-07-30', 0 );
+INSERT INTO flights VALUES(4, 'Budapest-Vienna',   'Budapest ', 'Vienna',   '2018-03-23', 0 );
+INSERT INTO flights VALUES(5, 'Amsterdam-Lodz',    'Amsterdam', 'Lodz',     '2018-01-16', 0 );
+INSERT INTO flights VALUES(6, 'Krakow-Brussel',    'Krakow',    'Brussel',  '2018-02-05', 0 );
+INSERT INTO flights VALUES(7, 'Hannover-Dortmund', 'Hannover',  'Dortmund', '2018-04-03', 0 );
+INSERT INTO flights VALUES(8, 'Stuttgart-Brno',    'Stuttgart', 'Brno',     '2018-06-09', 0 );
+INSERT INTO flights VALUES(9, 'Nuremberg-Lublin',  'Nuremberg', 'Lublin',   '2018-08-12', 0 );
+
+
+/*
+DISCONNECT;
+
 DROP TABLE orders_menu;
 DROP TABLE menu;
 DROP TABLE orders;
@@ -80,7 +95,7 @@ INSERT INTO users VALUES(DEFAULT, 'admin', 'admin', 'Ivan', 'Ivanov', 0);
 -- id = 2
 INSERT INTO users VALUES(DEFAULT, 'client', 'client', 'Petr', 'Petrov', 1);
 -- id = 3
-INSERT INTO users VALUES(DEFAULT, 'петров', 'петров', 'Иван', 'Петров', 1);
+INSERT INTO users VALUES(DEFAULT, 'пїЅпїЅпїЅпїЅпїЅпїЅ', 'пїЅпїЅпїЅпїЅпїЅпїЅ', 'пїЅпїЅпїЅпїЅ', 'пїЅпїЅпїЅпїЅпїЅпїЅ', 1);
 
 ----------------------------------------------------------------
 -- STATUSES
@@ -110,10 +125,10 @@ CREATE TABLE categories(
 	name VARCHAR(10) NOT NULL UNIQUE
 );
 
-INSERT INTO categories VALUES(1, 'Hot dishes'); -- горячие блюда
-INSERT INTO categories VALUES(2, 'Starters'); -- закуски
-INSERT INTO categories VALUES(3, 'Desserts'); -- десерт
-INSERT INTO categories VALUES(4, 'Beverages'); -- напитки
+INSERT INTO categories VALUES(1, 'Hot dishes'); -- пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+INSERT INTO categories VALUES(2, 'Starters'); -- пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+INSERT INTO categories VALUES(3, 'Desserts'); -- пїЅпїЅпїЅпїЅпїЅпїЅ
+INSERT INTO categories VALUES(4, 'Beverages'); -- пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 ----------------------------------------------------------------
 -- ORDERS
@@ -140,18 +155,18 @@ CREATE TABLE menu(
 	category_id INTEGER NOT NULL REFERENCES categories(id) 
 );
 
--- горячие блюда
+-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 INSERT INTO menu VALUES(DEFAULT, 'Borsch', 210, 1); -- 1 (order id)
 INSERT INTO menu VALUES(DEFAULT, 'Kharcho', 210, 1); -- 2
 INSERT INTO menu VALUES(DEFAULT, 'Solyanka', 250, 1); -- 3
--- напитки
+-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 INSERT INTO menu VALUES(DEFAULT, 'Juice', 70, 4); -- 4
 INSERT INTO menu VALUES(DEFAULT, 'Tea', 50, 4); -- 5
 INSERT INTO menu VALUES(DEFAULT, 'Coffee', 100, 4); -- 6
--- закуски
+-- пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 INSERT INTO menu VALUES(DEFAULT, 'Salmon salad', 250, 2); -- 7
 INSERT INTO menu VALUES(DEFAULT, 'Fish plate', 200, 2); -- 8
--- десерт        
+-- пїЅпїЅпїЅпїЅпїЅпїЅ        
 INSERT INTO menu VALUES(DEFAULT, 'Fruit plate', 160, 3); -- 9
 INSERT INTO menu VALUES(DEFAULT, 'Strawberries and cream', 260, 3); --10
                  
@@ -182,5 +197,6 @@ SELECT * FROM categories;
 SELECT * FROM statuses;
 SELECT * FROM users;
 SELECT * FROM roles;
+*/
 
-DISCONNECT;
+

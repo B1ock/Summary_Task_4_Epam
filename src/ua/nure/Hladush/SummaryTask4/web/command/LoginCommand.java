@@ -54,7 +54,7 @@ public class LoginCommand extends Command {
 			forward = Path.COMMAND_LIST_ORDERS;
 		}
 
-		if (userRole == Role.CLIENT) {
+		if (userRole == Role.USER) {
 			forward = Path.COMMAND_LIST_MENU;
 		}
 
