@@ -16,6 +16,7 @@ import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 import org.apache.log4j.Logger;
 
@@ -61,6 +62,8 @@ public class DBManager {
 
     private static final String SQL_FIND_ALL_ROLES_IN_FLIGHT = "SELECT * FROM roles_in_flight";
 
+    private static final String SQL_ADD_FLIGHT = "INSERT INTO flights (number, name, whence, destination, departure_date, status) VALUES(";
+
     public Connection getConnection() throws DBException {
         Connection con = null;
         try {
@@ -70,6 +73,29 @@ public class DBManager {
             throw new DBException(Messages.ERR_CANNOT_OBTAIN_CONNECTION, ex);
         }
         return con;
+    }
+
+    public boolean  addFlight(int number, String name, String whence, String destination, Date departure_date) throws DBException {
+        Statement stmt = null;
+        ResultSet rs = null;
+        Connection con = null;
+        try {
+            con = getConnection();
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(SQL_ADD_FLIGHT + number + ", "
+                                                  + name + ", "
+                                                  + whence + ", "
+                                                  + destination + ", "
+                                                  + departure_date + ", "
+                                                  + 0 );
+            con.commit();
+        } catch (SQLException ex) {
+            rollback(con);
+            throw new DBException(Messages.ERR_CANNOT_OBTAIN_FLIGHTS, ex);
+        } finally {
+            close(con, stmt, rs);
+        }
+        return true;
     }
 
     public List<Flight> findFlights() throws DBException {
