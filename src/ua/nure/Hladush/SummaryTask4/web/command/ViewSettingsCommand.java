@@ -1,6 +1,6 @@
 package ua.nure.Hladush.SummaryTask4.web.command;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 import ua.nure.Hladush.SummaryTask4.Path;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,13 +13,13 @@ public class ViewSettingsCommand extends Command {
 	
 	private static final long serialVersionUID = -3071536593627692473L;
 	
-	private static final Logger LOG = Logger.getLogger(ViewSettingsCommand.class);
+//	private static final Logger LOG = Logger.getLogger(ViewSettingsCommand.class);
 	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {		
-		LOG.debug("Command starts");
+//		LOG.debug("Command starts");
 
-		LOG.debug("Command finished");
+//		LOG.debug("Command finished");
 		return Path.PAGE_SETTINGS;
 	}
 

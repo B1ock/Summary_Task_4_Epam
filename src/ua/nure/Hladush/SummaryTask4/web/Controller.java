@@ -1,6 +1,6 @@
 package ua.nure.Hladush.SummaryTask4.web;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 import ua.nure.Hladush.SummaryTask4.Path;
 import ua.nure.Hladush.SummaryTask4.exception.AppException;
 import ua.nure.Hladush.SummaryTask4.web.command.Command;
@@ -19,7 +19,7 @@ public class Controller extends HttpServlet {
 	
 	private static final long serialVersionUID = 2423353715955164816L;
 
-	private static final Logger LOG = Logger.getLogger(Controller.class);
+//	private static final Logger LOG = Logger.getLogger(Controller.class);
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -37,15 +37,15 @@ public class Controller extends HttpServlet {
 	private void process(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 		
-		LOG.debug("Controller starts");
+//		LOG.debug("Controller starts");
 
 		// extract command name from the request
 		String commandName = request.getParameter("command");
-		LOG.trace("Request parameter: command --> " + commandName);
+//		LOG.trace("Request parameter: command --> " + commandName);
 
 		// obtain command object by its name
 		Command command = CommandContainer.get(commandName);
-		LOG.trace("Obtained command --> " + command);
+//		LOG.trace("Obtained command --> " + command);
 
 		// execute command and get forward address
 		String forward = Path.PAGE_ERROR_PAGE;
@@ -54,9 +54,9 @@ public class Controller extends HttpServlet {
 		} catch (AppException ex) {
 			request.setAttribute("errorMessage", ex.getMessage());
 		}
-		LOG.trace("Forward address --> " + forward);
+//		LOG.trace("Forward address --> " + forward);
 
-		LOG.debug("Controller finished, now go to forward address --> " + forward);
+//		LOG.debug("Controller finished, now go to forward address --> " + forward);
 		
 		// go to forward
 		request.getRequestDispatcher(forward).forward(request, response);

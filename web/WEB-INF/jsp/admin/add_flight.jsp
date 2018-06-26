@@ -7,13 +7,16 @@
     <title>Admin Menu</title>
 </head>
 <body>
-<form action="addflight">
+<form action="addflight" >
 <input type="text" name="numF"    size="40"><br>
+<!--<input type="text" name="nameF"   size="40"><br>-->
 <input type="text" name="whenceF" size="40"><br>
 <input type="text" name="destF"   size="40"><br>
-<input type="text" name="nameF"   size="40"><br>
 <input type="text" name="departF" size="40"><br>
-    <button type="submit">EDIT</button>
+    <button type="submit">ADD F</button>
+</form>
+<form  action="admin_menu.jsp" method="get">
+<button type="submit">BACK</button>
 </form>
 
 </p>

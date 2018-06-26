@@ -1,16 +1,31 @@
 
 DROP TABLE IF EXISTS flights;
 
+CREATE SEQUENCE user_ids;
 CREATE TABLE flights(
-    id INTEGER NOT NULL AUTO_INCREMENT  PRIMARY KEY,
+    /*id INTEGER NOT NULL AUTO_INCREMENT  PRIMARY KEY,*/
+    id INTEGER NOT NULL PRIMARY KEY DEFAULT NEXTVAL('user_ids'),
     number INTEGER NOT NULL,
     name VARCHAR(30) NOT NULL ,
     whence VARCHAR(15) NOT NULL ,
     destination VARCHAR(15) NOT NULL ,
     departure_date DATE,
-    status BOOLEAN
+    /*status BOOLEAN*/
+    status INTEGER
 );
 
+
+INSERT INTO flights (number, name, whence, destination, departure_date, status) VALUES(random()*(100-10), 'Kiev-Berlin',       'Kiev',      'Berlin',   '2018-10-07', 0 );
+INSERT INTO flights (number, name, whence, destination, departure_date, status) VALUES(random()*(100-10), 'Minsk-Praha',       'Minsk',     'Praha',    '2018-09-19', 0 );
+INSERT INTO flights (number, name, whence, destination, departure_date, status) VALUES(random()*(100-10), 'Paris-London',      'Paris',     'London',   '2018-05-11', 0 );
+INSERT INTO flights (number, name, whence, destination, departure_date, status) VALUES(random()*(100-10), 'Madrid-Rome',       'Madrid',    'Rome',     '2018-07-30', 0 );
+INSERT INTO flights (number, name, whence, destination, departure_date, status) VALUES(random()*(100-10), 'Budapest-Vienna',   'Budapest ', 'Vienna',   '2018-03-23', 0 );
+INSERT INTO flights (number, name, whence, destination, departure_date, status) VALUES(random()*(100-10), 'Amsterdam-Lodz',    'Amsterdam', 'Lodz',     '2018-01-16', 0 );
+INSERT INTO flights (number, name, whence, destination, departure_date, status) VALUES(random()*(100-10), 'Krakow-Brussel',    'Krakow',    'Brussel',  '2018-02-05', 0 );
+INSERT INTO flights (number, name, whence, destination, departure_date, status) VALUES(random()*(100-10), 'Hannover-Dortmund', 'Hannover',  'Dortmund', '2018-04-03', 0 );
+INSERT INTO flights (number, name, whence, destination, departure_date, status) VALUES(random()*(100-10), 'Stuttgart-Brno',    'Stuttgart', 'Brno',     '2018-06-09', 0 );
+INSERT INTO flights (number, name, whence, destination, departure_date, status) VALUES(random()*(100-10), 'Nuremberg-Lublin',  'Nuremberg', 'Lublin',   '2018-08-12', 0 );
+/*
 INSERT INTO flights (number, name, whence, destination, departure_date, status) VALUES(RAND()*(100-10), 'Kiev-Berlin',       'Kiev',      'Berlin',   '2018-10-07', 0 );
 INSERT INTO flights (number, name, whence, destination, departure_date, status) VALUES(RAND()*(100-10), 'Minsk-Praha',       'Minsk',     'Praha',    '2018-09-19', 0 );
 INSERT INTO flights (number, name, whence, destination, departure_date, status) VALUES(RAND()*(100-10), 'Paris-London',      'Paris',     'London',   '2018-05-11', 0 );
@@ -21,7 +36,7 @@ INSERT INTO flights (number, name, whence, destination, departure_date, status) 
 INSERT INTO flights (number, name, whence, destination, departure_date, status) VALUES(RAND()*(100-10), 'Hannover-Dortmund', 'Hannover',  'Dortmund', '2018-04-03', 0 );
 INSERT INTO flights (number, name, whence, destination, departure_date, status) VALUES(RAND()*(100-10), 'Stuttgart-Brno',    'Stuttgart', 'Brno',     '2018-06-09', 0 );
 INSERT INTO flights (number, name, whence, destination, departure_date, status) VALUES(RAND()*(100-10), 'Nuremberg-Lublin',  'Nuremberg', 'Lublin',   '2018-08-12', 0 );
-
+*/
 
 /*
 DISCONNECT;

@@ -25,8 +25,8 @@ public class AddFlight extends HttpServlet {
         int num = Integer.parseInt(request.getParameter("numF"));
         String whence = request.getParameter("whenceF");
         String dest = request.getParameter("destF");
-        String name = request.getParameter("nameF");
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
+        //String name = request.getParameter("nameF");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         try {
              date = dateFormat.parse(request.getParameter("departF"));
@@ -35,12 +35,12 @@ public class AddFlight extends HttpServlet {
         }
 
         try {
-            DBManager.getInstance().addFlight(num, whence, dest, name, date);
+            DBManager.getInstance().addFlight(num, whence, dest,  date);
         } catch (DBException e) {
             e.printStackTrace();
         }
 
-        String page = Path.PAGE_ADMIN_MENU;
+        String page = Path.PAGE_ADD_FLIGHT;
         request.getRequestDispatcher(page).forward(request, response);
     }
 }

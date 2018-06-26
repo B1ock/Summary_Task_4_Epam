@@ -8,13 +8,13 @@
 </head>
 <body>
 <p style="text-align: center">
-    <form action="add_flight.jsp">
-        <button type="submit">ADD</button>
+    <form  action="add_flight.jsp" method="post">
+        <button href="add_flight.jsp" type="submit">ADD</button>
     </form>
-    <form action="delete_flight.jsp">
+    <form action="../../../delete_flight.jsp">
         <button type="submit">DELETE</button>
     </form>
-    <form action="edit_flight.jsp">
+    <form action="../../../edit_flight.jsp">
         <button type="submit">EDIT</button>
     </form>
 

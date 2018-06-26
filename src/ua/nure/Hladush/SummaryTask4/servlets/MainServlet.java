@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet("/mainservlet")
+@WebServlet("mainservlet")
 public class MainServlet extends HttpServlet {
 
 

@@ -1,5 +1,7 @@
-CONNECT 'jdbc:derby://localhost:1527/st4db;user=test;password=test';
+/*CONNECT 'jdbc:derby://localhost:1527/st4db;user=test;password=test';
+*/
 
+CONNECT 'jdbc:postgresql://localhost:5432/vrpdb;user=test;password=test';
 SELECT * FROM users;
 SELECT * FROM orders;
 

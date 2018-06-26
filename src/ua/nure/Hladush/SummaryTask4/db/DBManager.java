@@ -14,17 +14,18 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 
 
 
 
 public class DBManager {
-    private static final Logger LOG = Logger.getLogger(DBManager.class);
+//    private static final Logger LOG = Logger.getLogger(DBManager.class);
 
     // //////////////////////////////////////////////////////////
     // singleton
@@ -44,10 +45,10 @@ public class DBManager {
             Context initContext = new InitialContext();
             Context envContext = (Context) initContext.lookup("java:/comp/env");
             // ST4DB - the name of data source
-            ds = (DataSource) envContext.lookup("jdbc/ST4DB");
-            LOG.trace("Data source ==> " + ds);
+            ds = (DataSource) envContext.lookup("jdbc/AIRLINE");
+//            LOG.trace("Data source ==> " + ds);
         } catch (NamingException ex) {
-            LOG.error(Messages.ERR_CANNOT_OBTAIN_DATA_SOURCE, ex);
+//            LOG.error(Messages.ERR_CANNOT_OBTAIN_DATA_SOURCE, ex);
             throw new DBException(Messages.ERR_CANNOT_OBTAIN_DATA_SOURCE, ex);
         }
     }
@@ -62,32 +63,45 @@ public class DBManager {
 
     private static final String SQL_FIND_ALL_ROLES_IN_FLIGHT = "SELECT * FROM roles_in_flight";
 
-    private static final String SQL_ADD_FLIGHT = "INSERT INTO flights (number, name, whence, destination, departure_date, status) VALUES(";
+    //private static final String SQL_ADD_FLIGHT = "INSERT INTO flights (number, name, whence, destination, departure_date, status) VALUES(";
+
+    private static final String SQL_ADD_FLIGHT = "INSERT INTO flights (number, name, whence, destination, departure_date, status) VALUES( (?), (?), (?), (?), (?), 0 )";
 
     public Connection getConnection() throws DBException {
         Connection con = null;
         try {
             con = ds.getConnection();
         } catch (SQLException ex) {
-            LOG.error(Messages.ERR_CANNOT_OBTAIN_CONNECTION, ex);
+//            LOG.error(Messages.ERR_CANNOT_OBTAIN_CONNECTION, ex);
             throw new DBException(Messages.ERR_CANNOT_OBTAIN_CONNECTION, ex);
         }
         return con;
     }
 
-    public boolean  addFlight(int number, String name, String whence, String destination, Date departure_date) throws DBException {
-        Statement stmt = null;
+    public boolean  addFlight(int number, String whence, String destination, Date departure_date) throws DBException {
+        PreparedStatement stmt = null;
         ResultSet rs = null;
         Connection con = null;
+        String name = whence + "-" + destination;
         try {
             con = getConnection();
-            stmt = con.createStatement();
-            rs = stmt.executeQuery(SQL_ADD_FLIGHT + number + ", "
-                                                  + name + ", "
-                                                  + whence + ", "
-                                                  + destination + ", "
-                                                  + departure_date + ", "
-                                                  + 0 );
+            stmt = con.prepareStatement(SQL_ADD_FLIGHT);
+            //StringBuffer SQL = new StringBuffer();
+            /*
+            SQL.append(SQL_ADD_FLIGHT + number + ", ")
+                    .append( name + ", ")
+                            .append( whence + ", ")
+                                    .append( destination + ", ")
+                                            .append(departure_date + ", ")
+                                                    .append(+ 0 + ");");
+            */
+            stmt.setInt(1, number);
+            stmt.setString(2, name);
+            stmt.setString( 3, whence);
+            stmt.setString( 4, destination);
+           // stmt.setDate(5, new SimpleDateFormat("yyyy-MM-dd").format(departure_date));
+                stmt.setDate(5, new java.sql.Date(departure_date.getTime()));
+             stmt.executeUpdate();
             con.commit();
         } catch (SQLException ex) {
             rollback(con);
@@ -158,7 +172,7 @@ public class DBManager {
             con.commit();
         } catch (SQLException ex) {
             rollback(con);
-            LOG.error(Messages.ERR_CANNOT_OBTAIN_STAFF, ex);
+//            LOG.error(Messages.ERR_CANNOT_OBTAIN_STAFF, ex);
             throw new DBException(Messages.ERR_CANNOT_OBTAIN_STAFF, ex);
         } finally {
             close(con, stmt, rs);
@@ -181,7 +195,7 @@ public class DBManager {
             con.commit();
         } catch (SQLException ex) {
             rollback(con);
-            LOG.error(Messages.ERR_CANNOT_ROLES_IN_FLIGHT, ex);
+//            LOG.error(Messages.ERR_CANNOT_ROLES_IN_FLIGHT, ex);
             throw new DBException(Messages.ERR_CANNOT_ROLES_IN_FLIGHT, ex);
         } finally {
             close(con, stmt, rs);
@@ -235,7 +249,7 @@ public class DBManager {
             try {
                 con.rollback();
             } catch (SQLException ex) {
-                LOG.error("Cannot rollback transaction", ex);
+//                LOG.error("Cannot rollback transaction", ex);
             }
         }
     }
@@ -247,7 +261,7 @@ public class DBManager {
             try {
                 rs.close();
             } catch (SQLException ex) {
-                LOG.error(Messages.ERR_CANNOT_CLOSE_RESULTSET, ex);
+//                LOG.error(Messages.ERR_CANNOT_CLOSE_RESULTSET, ex);
             }
         }
     }
@@ -257,7 +271,7 @@ public class DBManager {
             try {
                 con.close();
             } catch (SQLException ex) {
-                LOG.error(Messages.ERR_CANNOT_CLOSE_CONNECTION, ex);
+//                LOG.error(Messages.ERR_CANNOT_CLOSE_CONNECTION, ex);
             }
         }
     }
@@ -270,7 +284,7 @@ public class DBManager {
             try {
                 stmt.close();
             } catch (SQLException ex) {
-                LOG.error(Messages.ERR_CANNOT_CLOSE_STATEMENT, ex);
+//                LOG.error(Messages.ERR_CANNOT_CLOSE_STATEMENT, ex);
             }
         }
     }

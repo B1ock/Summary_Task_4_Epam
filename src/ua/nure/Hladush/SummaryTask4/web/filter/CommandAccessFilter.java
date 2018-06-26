@@ -1,6 +1,6 @@
 package ua.nure.Hladush.SummaryTask4.web.filter;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 import ua.nure.Hladush.SummaryTask4.Path;
 import ua.nure.Hladush.SummaryTask4.db.Role;
 
@@ -14,30 +14,30 @@ import java.util.*;
 
 public class CommandAccessFilter implements Filter {
 	
-	private static final Logger LOG = Logger.getLogger(CommandAccessFilter.class);
-
+//	private static final Logger LOG = Logger.getLogger(CommandAccessFilter.class);
+//
 	// commands access	
 	private Map<Role, List<String>> accessMap = new HashMap<Role, List<String>>();
 	private List<String> commons = new ArrayList<String>();	
 	private List<String> outOfControl = new ArrayList<String>();
 	
 	public void destroy() {
-		LOG.debug("Filter destruction starts");
+//		LOG.debug("Filter destruction starts");
 		// do nothing
-		LOG.debug("Filter destruction finished");
+//		LOG.debug("Filter destruction finished");
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		LOG.debug("Filter starts");
+//		LOG.debug("Filter starts");
 		
 		if (accessAllowed(request)) {
-			LOG.debug("Filter finished");
+//			LOG.debug("Filter finished");
 			chain.doFilter(request, response);
 		} else {
 			String errorMessasge = "You do not have permission to access the requested resource";
 			
 			request.setAttribute("errorMessage", errorMessasge);
-			LOG.trace("Set the request attribute: errorMessage --> " + errorMessasge);
+//			LOG.trace("Set the request attribute: errorMessage --> " + errorMessasge);
 			
 			request.getRequestDispatcher(Path.PAGE_ERROR_PAGE)
 					.forward(request, response);
@@ -71,23 +71,23 @@ public class CommandAccessFilter implements Filter {
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {
-		LOG.debug("Filter initialization starts");
+//		LOG.debug("Filter initialization starts");
 		
 		// roles
 		accessMap.put(Role.ADMIN, asList(fConfig.getInitParameter("admin")));
 		accessMap.put(Role.USER, asList(fConfig.getInitParameter("user")));
 		accessMap.put(Role.DISPATCHER, asList(fConfig.getInitParameter("dispatcher")));
-		LOG.trace("Access map --> " + accessMap);
+//		LOG.trace("Access map --> " + accessMap);
 
 		// commons
 		commons = asList(fConfig.getInitParameter("common"));
-		LOG.trace("Common commands --> " + commons);
+//		LOG.trace("Common commands --> " + commons);
 
 		// out of control
 		outOfControl = asList(fConfig.getInitParameter("out-of-control"));
-		LOG.trace("Out of control commands --> " + outOfControl);
+//		LOG.trace("Out of control commands --> " + outOfControl);
 		
-		LOG.debug("Filter initialization finished");
+//		LOG.debug("Filter initialization finished");
 	}
 	
 	/**

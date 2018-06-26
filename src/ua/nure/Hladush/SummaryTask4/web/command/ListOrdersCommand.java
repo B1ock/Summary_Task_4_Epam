@@ -1,6 +1,6 @@
 package ua.nure.Hladush.SummaryTask4.web.command;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 import ua.nure.Hladush.SummaryTask4.Path;
 import ua.nure.Hladush.SummaryTask4.db.DBManager;
 import ua.nure.Hladush.SummaryTask4.db.bean.UserFlightBrigadeBean;
@@ -21,7 +21,7 @@ public class ListOrdersCommand extends Command {
 
 	private static final long serialVersionUID = 1863978254689586513L;
 	
-	private static final Logger LOG = Logger.getLogger(ListOrdersCommand.class);
+//	private static final Logger LOG = Logger.getLogger(ListOrdersCommand.class);
 	
 	/**
 	 * Serializable comparator used with TreeMap container. When the servlet
@@ -50,7 +50,7 @@ public class ListOrdersCommand extends Command {
 	@Override
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException, AppException {
-		LOG.debug("Commands starts");
+//		LOG.debug("Commands starts");
 				
 	//	List<UserOrderBean> userOrderBeanList = DBManager.getInstance().getUserOrderBeans();
 	//	LOG.trace("Found in DB: userOrderBeanList --> " + userOrderBeanList);
@@ -61,7 +61,7 @@ public class ListOrdersCommand extends Command {
 	//	request.setAttribute("userOrderBeanList", userOrderBeanList);
 	//	LOG.trace("Set the request attribute: userOrderBeanList --> " + userOrderBeanList);
 		
-		LOG.debug("Commands finished");
+//		LOG.debug("Commands finished");
 		return Path.PAGE_LIST_ORDERS;
 	}
 

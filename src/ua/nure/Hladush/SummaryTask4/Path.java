@@ -14,7 +14,8 @@ public final class Path {
    // public static final String PAGE_LIST_MENU = "/WEB-INF/jsp/client/list_menu.jsp";
     public static final String PAGE_LIST_ORDERS = "/WEB-INF/jsp/admin/list_orders.jsp";
     public static final String PAGE_SETTINGS = "/WEB-INF/jsp/settings.jsp";
-    public static final String PAGE_ADMIN_MENU = "/WEB-INF/jsp/admin/admin_menu.jsp";
+    public static final String PAGE_ADMIN_MENU = "WEB-INF/jsp/admin/admin_menu.jsp";
+    public static final String PAGE_ADD_FLIGHT = "WEB-INF/jsp/admin/add_flight.jsp";
 
     // commands
     public static final String COMMAND_LIST_ORDERS = "/controller?command=listOrders";

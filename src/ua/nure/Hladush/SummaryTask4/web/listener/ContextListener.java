@@ -1,7 +1,7 @@
 package ua.nure.Hladush.SummaryTask4.web.listener;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
+//import org.apache.log4j.Logger;
+//import org.apache.log4j.PropertyConfigurator;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -10,7 +10,7 @@ import javax.servlet.ServletContextListener;
 
 public class ContextListener implements ServletContextListener {
 
-	private static final Logger LOG = Logger.getLogger(ContextListener.class);
+//	private static final Logger LOG = Logger.getLogger(ContextListener.class);
 
 	public void contextDestroyed(ServletContextEvent event) {
 		log("Servlet context destruction starts");
@@ -36,9 +36,9 @@ public class ContextListener implements ServletContextListener {
 	private void initLog4J(ServletContext servletContext) {
 		log("Log4J initialization started");
 		try {
-			PropertyConfigurator.configure(
-				servletContext.getRealPath("WEB-INF/log4j.properties"));
-			LOG.debug("Log4j has been initialized");
+//			PropertyConfigurator.configure(
+//				servletContext.getRealPath("WEB-INF/log4j.properties"));
+//			LOG.debug("Log4j has been initialized");
 		} catch (Exception ex) {
 			log("Cannot configure Log4j");
 			ex.printStackTrace();
@@ -49,7 +49,7 @@ public class ContextListener implements ServletContextListener {
 	/**
 	 * Initializes CommandContainer.
 	 * 
-	 * @param servletContext
+//	 * @param servletContext
 	 */
 	private void initCommandContainer() {
 		

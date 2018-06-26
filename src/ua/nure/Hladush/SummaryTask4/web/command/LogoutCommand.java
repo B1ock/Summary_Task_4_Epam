@@ -1,6 +1,6 @@
 package ua.nure.Hladush.SummaryTask4.web.command;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 import ua.nure.Hladush.SummaryTask4.Path;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,18 +15,18 @@ public class LogoutCommand extends Command {
 
 	private static final long serialVersionUID = -2785976616686657267L;
 
-	private static final Logger LOG = Logger.getLogger(LogoutCommand.class);
+//	private static final Logger LOG = Logger.getLogger(LogoutCommand.class);
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		LOG.debug("Command starts");
+//		LOG.debug("Command starts");
 		
 		HttpSession session = request.getSession(false);
 		if (session != null) {
 			session.invalidate();
 		}
 
-		LOG.debug("Command finished");
+//		LOG.debug("Command finished");
 		return Path.PAGE_LOGIN;
 	}
 

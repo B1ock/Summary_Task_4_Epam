@@ -1,6 +1,6 @@
 package ua.nure.Hladush.SummaryTask4.web.command;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 import ua.nure.Hladush.SummaryTask4.Path;
 import ua.nure.Hladush.SummaryTask4.db.DBManager;
 import ua.nure.Hladush.SummaryTask4.db.entity.Staff;
@@ -20,17 +20,17 @@ public class ListStaffCommand extends Command {
 
 	private static final long serialVersionUID = 7732286214029478505L;
 
-	private static final Logger LOG = Logger.getLogger(ListStaffCommand.class);
+//	private static final Logger LOG = Logger.getLogger(ListStaffCommand.class);
 
 	@Override
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException, AppException {
 		
-		LOG.debug("Command starts");
+//		LOG.debug("Command starts");
 		
 		// get menu items list
 		List<Staff> staffpersons = DBManager.getInstance().findStaff();
-		LOG.trace("Found in DB: menuItemsList --> " + staffpersons);
+//		LOG.trace("Found in DB: menuItemsList --> " + staffpersons);
 		
 		// sort menu by category
 		Collections.sort(staffpersons, new Comparator<Staff>() {
@@ -41,9 +41,9 @@ public class ListStaffCommand extends Command {
 		
 		// put menu items list to the request
 		request.setAttribute("staffpersons", staffpersons);
-		LOG.trace("Set the request attribute: staffpersons --> " + staffpersons);
+//		LOG.trace("Set the request attribute: staffpersons --> " + staffpersons);
 		
-		LOG.debug("Command finished");
+//		LOG.debug("Command finished");
 		return Path.PAGE_STAFF;
 	}
 

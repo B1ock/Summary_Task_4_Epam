@@ -1,6 +1,6 @@
 package ua.nure.Hladush.SummaryTask4.web.command;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -8,7 +8,7 @@ import java.util.TreeMap;
 
 public class CommandContainer {
 	
-	private static final Logger LOG = Logger.getLogger(CommandContainer.class);
+//	private static final Logger LOG = Logger.getLogger(CommandContainer.class);
 	
 	private static Map<String, Command> commands = new TreeMap<String, Command>();
 	
@@ -25,8 +25,8 @@ public class CommandContainer {
 		// admin commands
 		commands.put("listOrders", new ListOrdersCommand());
 		
-		LOG.debug("Command container was successfully initialized");
-		LOG.trace("Number of commands --> " + commands.size());
+//		LOG.debug("Command container was successfully initialized");
+//		LOG.trace("Number of commands --> " + commands.size());
 	}
 
 	/**
@@ -38,7 +38,7 @@ public class CommandContainer {
 	 */
 	public static Command get(String commandName) {
 		if (commandName == null || !commands.containsKey(commandName)) {
-			LOG.trace("Command not found, name --> " + commandName);
+//			LOG.trace("Command not found, name --> " + commandName);
 			return commands.get("noCommand"); 
 		}
 		
